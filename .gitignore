@@ -1,0 +1,59 @@
+# Compiled binaries
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dll
+
+# Go modules and dependencies
+/vendor/
+go.sum
+go.work
+go.work.sum
+
+# Build artifacts
+bin/
+build/
+dist/
+tmp/
+*.test
+
+# IDE/editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# MacOS/Windows system files
+Thumbs.db
+.DS_Store
+
+# Logs and debugging
+*.log
+debug/
+trace.out
+pprof/
+
+# Go cache and test results
+*.coverprofile
+*.cov
+.coverage/
+*.test
+*.bench
+
+# Environment and secrets
+.env
+.env.*
+config.yaml
+config.json
+
+# Docker-related files
+.dockerignore
+docker-compose.override.yml
+docker-compose.dev.yml
+
+# Git-related
+*.orig
+*.rej
