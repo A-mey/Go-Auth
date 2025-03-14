@@ -8,7 +8,7 @@
 
 # Go modules and dependencies
 /vendor/
-go.sum
+# go.sum
 go.work
 go.work.sum
 
