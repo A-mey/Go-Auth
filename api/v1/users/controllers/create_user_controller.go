@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/A-mey/Auth_db/api/v1/users/models"
+	"github.com/A-mey/GO-AUTH/api/v1/users/models"
 	"github.com/gin-gonic/gin"
 )
 

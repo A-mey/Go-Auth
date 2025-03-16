@@ -1,17 +1,22 @@
-package routes
+package healthRoutes
 
 import (
-	"github.com/A-mey/Auth_db/api/health/controllers"
-	"github.com/A-mey/Auth_db/api/health/interfaces"
-	"github.com/A-mey/Auth_db/api/health/services"
+	"github.com/A-mey/GO-AUTH/api/health/controllers"
+	healthInterfaces "github.com/A-mey/GO-AUTH/api/health/interfaces"
+	"github.com/A-mey/GO-AUTH/api/health/services"
+	RoutesInterface "github.com/A-mey/GO-AUTH/common/interfaces"
 	"github.com/gin-gonic/gin"
 )
 
-func InitializeRoutes(r *gin.Engine) {
+var _ RoutesInterface.RoutesInterface = (*HealthRoutes)(nil)
+
+type HealthRoutes struct{}
+
+func (hr *HealthRoutes) InitializeRoutes(r *gin.Engine) {
 
 	healthService := &services.DefaultHealthService{}
 
-	var healthController interfaces.HealthController = controllers.NewHealthController(healthService)
+	var healthController healthInterfaces.HealthController = controllers.NewHealthController(healthService)
 	userRoutes := r.Group("/health")
 	{
 		userRoutes.GET("/", healthController.HealthCheck)

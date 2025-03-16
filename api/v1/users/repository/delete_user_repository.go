@@ -4,7 +4,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/A-mey/Auth_db/api/v1/users/models"
+	"github.com/A-mey/GO-AUTH/api/v1/users/models"
 )
 
 var user = []models.User{

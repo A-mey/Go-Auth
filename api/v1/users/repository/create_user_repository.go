@@ -1,6 +1,6 @@
 package userRepository
 
-import "github.com/A-mey/Auth_db/api/v1/users/models"
+import "github.com/A-mey/GO-AUTH/api/v1/users/models"
 
 // Simulated in-memory user store
 var users = []models.User{

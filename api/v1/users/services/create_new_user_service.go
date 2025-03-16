@@ -3,7 +3,7 @@ package services
 import (
 	"errors"
 
-	"github.com/A-mey/Auth_db/api/v1/users/models"
+	"github.com/A-mey/GO-AUTH/api/v1/users/models"
 )
 
 func (s *DefaultUserService) CreateNewUserService(user *models.User) error {

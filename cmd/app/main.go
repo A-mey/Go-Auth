@@ -4,10 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	userRoutes "github.com/A-mey/Auth_db/api/health/routes"
-	healthRoutes "github.com/A-mey/Auth_db/api/v1/users/routes"
-	"github.com/A-mey/Auth_db/config/config"
-	"github.com/A-mey/Auth_db/config/sql"
+	"github.com/A-mey/GO-AUTH/cmd/routes"
+	"github.com/A-mey/GO-AUTH/config"
+	"github.com/A-mey/GO-AUTH/libs/sql"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,8 +18,7 @@ func main() {
 	r := gin.Default()
 	sql.InitializeSQL()
 
-	userRoutes.InitializeRoutes(r)
-	healthRoutes.InitializeRoutes(r)
+	routes.InitializeRoutes(r)
 
 	err := r.Run(":8080")
 	if err != nil {
