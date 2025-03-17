@@ -7,8 +7,9 @@ import (
 var _ interfaces.OtpControllerInterface = (*OtpController)(nil)
 
 type OtpController struct {
+	otpService interfaces.OtpServiceInterface
 }
 
-func NewOtpController() *OtpController {
-	return &OtpController{}
+func NewOtpController(service interfaces.OtpServiceInterface) *OtpController {
+	return &OtpController{otpService: service}
 }

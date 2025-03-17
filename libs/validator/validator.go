@@ -8,7 +8,7 @@ import (
 )
 
 func Validator(c *gin.Context, schemaMap map[string]string) (bool, string, error) {
-	key := CreateKey(c)
+	// key := CreateKey(c)
 	body, err := c.GetRawData()
 	if err != nil {
 		return false, "", err
