@@ -1,28 +1,35 @@
 package routes
 
 import (
-	"github.com/A-mey/GO-AUTH/api/middlewares"
 	"github.com/A-mey/GO-AUTH/api/v1/otp/controllers"
 	"github.com/A-mey/GO-AUTH/api/v1/otp/interfaces"
 	"github.com/A-mey/GO-AUTH/api/v1/otp/services"
+	schemaValidationInterfaces "github.com/A-mey/GO-AUTH/api/v1/schema-validator/interfaces"
 	RoutesInterface "github.com/A-mey/GO-AUTH/common/interfaces"
 	"github.com/gin-gonic/gin"
 )
 
 var _ RoutesInterface.RoutesInterface = (*otpRoutes)(nil)
 
-type otpRoutes struct{}
+type otpRoutes struct {
+	schemaValidatorMiddleware schemaValidationInterfaces.SchemaValidatorMiddlewareInterfaces
+}
+
+func NewOtpRoutes(middleware schemaValidationInterfaces.SchemaValidatorMiddlewareInterfaces) RoutesInterface.RoutesInterface {
+	return &otpRoutes{schemaValidatorMiddleware: middleware}
+}
 
 func (hr *otpRoutes) InitializeRoutes(r *gin.Engine) {
-
-	r.Use(middlewares.ValidationRequestMiddleware(map[string]string{"name": "John Doe", "age": "30", "email": "john@example.com"}))
 
 	otpService := &services.OtpService{}
 
 	var otpController interfaces.OtpControllerInterface = controllers.NewOtpController(otpService)
-	userRoutes := r.Group("/otp")
+	otpRoutes := r.Group("/otp")
+
+	r.Use(hr.schemaValidatorMiddleware.ValidationRequestMiddleware(map[string]string{"name": "John Doe", "age": "30", "email": "john@example.com"}))
+
 	{
-		userRoutes.POST("/registration", otpController.SendRegistrationOtp)
-		userRoutes.POST("/resetPassword", otpController.SendResetPasswordOtp)
+		otpRoutes.POST("/registration", otpController.SendRegistrationOtp)
+		otpRoutes.POST("/resetPassword", otpController.SendResetPasswordOtp)
 	}
 }

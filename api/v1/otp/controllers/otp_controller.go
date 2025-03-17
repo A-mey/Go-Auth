@@ -1,15 +1,15 @@
 package controllers
 
 import (
-	"github.com/A-mey/GO-AUTH/api/v1/otp/interfaces"
+	otpInterfaces "github.com/A-mey/GO-AUTH/api/v1/otp/interfaces"
 )
 
-var _ interfaces.OtpControllerInterface = (*OtpController)(nil)
+var _ otpInterfaces.OtpControllerInterface = (*OtpController)(nil)
 
 type OtpController struct {
-	otpService interfaces.OtpServiceInterface
+	otpService otpInterfaces.OtpServiceInterface
 }
 
-func NewOtpController(service interfaces.OtpServiceInterface) *OtpController {
+func NewOtpController(service otpInterfaces.OtpServiceInterface) *OtpController {
 	return &OtpController{otpService: service}
 }
