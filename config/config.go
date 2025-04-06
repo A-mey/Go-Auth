@@ -15,6 +15,9 @@ func LoadConfig() models.Config {
 
 	envFile := ".env"
 
+	wd, _ := os.Getwd()
+	log.Println("Current working directory:", wd)
+
 	fmt.Println("environment1", env)
 
 	if env == "development" {
@@ -25,7 +28,7 @@ func LoadConfig() models.Config {
 
 	err := godotenv.Load(envFile)
 	if err != nil {
-		log.Printf("No %s file found. Using system environment variables.\n", envFile)
+		log.Fatalf("No %s file found. Using system environment variables.\n", envFile)
 	}
 
 	config := models.Config{

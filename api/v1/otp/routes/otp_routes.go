@@ -29,7 +29,7 @@ func (hr *otpRoutes) InitializeRoutes(r *gin.Engine) {
 	r.Use(hr.schemaValidatorMiddleware.ValidationRequestMiddleware(map[string]string{"name": "John Doe", "age": "30", "email": "john@example.com"}))
 
 	{
-		otpRoutes.POST("/registration", otpController.SendRegistrationOtp)
-		otpRoutes.POST("/resetPassword", otpController.SendResetPasswordOtp)
+		otpRoutes.POST("/send", otpController.SendOtp)
+		otpRoutes.POST("/validate", otpController.ValidateOtp)
 	}
 }
